@@ -13,8 +13,8 @@
 
 int main()
 {
-    const int lowThreshold = 70;
-    const int highThreshold = 140;
+    const int lowThreshold = 100;
+    const int highThreshold = 200;
 
     // ========================================================
     // 1. Load input image

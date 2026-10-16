@@ -4,17 +4,25 @@ A learning project implementing the Canny edge detection pipeline in C++ using O
 
 The goal of this project is to understand the individual stages of edge detection by implementing them manually rather than relying entirely on OpenCV's built-in `cv::Canny()` function.
 
+## Results
+
+Both implementations process the same input image. Their outputs are shown side by side for visual comparison.
+
+| Custom Canny | OpenCV Canny |
+|:---:|:---:|
+| ![Custom Canny](images/06_my_own_canny.png) | ![OpenCV Canny](images/07_canny_opencv.png) |
+
 ## Features
 
 The implementation includes the following stages:
 
-1. **Grayscale conversion** - converts the input image to grayscale.
-2. **Gaussian blur** - reduces image noise before edge detection.
-3. **Sobel operators** - calculates horizontal and vertical image gradients.
-4. **Gradient magnitude** - estimates the strength of intensity changes.
-5. **Non-Maximum Suppression (NMS)** - thins detected edges by retaining local gradient maxima.
-6. **Double thresholding** - classifies candidate edges as rejected, weak, or strong.
-7. **Edge tracking by hysteresis** - retains weak edges connected to strong edges using 8-connectivity.
+1. **Grayscale conversion** — converts the input image to grayscale.
+2. **Gaussian blur** — reduces image noise before edge detection.
+3. **Sobel operators** — calculates horizontal and vertical image gradients.
+4. **Gradient magnitude** — estimates the strength of intensity changes.
+5. **Non-Maximum Suppression (NMS)** — thins detected edges by retaining local gradient maxima.
+6. **Double thresholding** — classifies candidate edges as rejected, weak, or strong.
+7. **Edge tracking by hysteresis** — retains weak edges connected to strong edges using 8-connectivity.
 
 Intermediate images are saved to visualize the output of each stage.
 
@@ -44,11 +52,9 @@ Intermediate images are saved to visualize the output of each stage.
 └── README.md
 ```
 
-*The structure above is illustrative; adjust filenames to match the actual repository.*
-
 ## Output
 
-The program saves intermediate results, making it possible to inspect how the image changes throughout the pipeline:
+The program saves intermediate results, making it possible to inspect how the image changes throughout the pipeline.
 
 | File | Description |
 |---|---|
@@ -86,4 +92,4 @@ Completed as an educational implementation. Further improvements may include mor
 
 This project is intended for educational purposes.
 
-The input image is distributed under its own license. See the [original source](https://commons.wikimedia.org/wiki/File:Peppers_in_water.jpg) for licensing details.
+The input image is sourced from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Peppers_in_water.jpg). See the original file page for licensing details.
