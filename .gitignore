@@ -1,0 +1,12 @@
+# Build output
+/build/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Compiled binaries
+*.exe
+*.dll
+*.o
+*.obj
