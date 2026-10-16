@@ -23,7 +23,7 @@ int main()
     cv::Mat image = cv::imread("images\\input.png");
 
     if (image.empty()) {
-        std::printf("Nie udalo sie odczytac obrazu\n");
+        std::printf("Failed to load input image\n");
         return 1;
     }
 
@@ -37,7 +37,7 @@ int main()
     cv::cvtColor(image, img_gray, cv::COLOR_BGR2GRAY);
 
     if (!cv::imwrite("images\\01_grayscale.png", img_gray)) {
-        std::printf("Nie udalo sie zapisac obrazu grayscale\n");
+        std::printf("Failed to save grayscale image\n");
         return 2;
     }
 
@@ -49,7 +49,7 @@ int main()
     );
 
     if (!cv::imwrite("images\\02_gaussian_blur.png", blurred)) {
-        std::printf("Nie udalo sie zapisac obrazu po rozmyciu\n");
+        std::printf("Failed to save blurred image\n");
         return 3;
     }
 
@@ -97,7 +97,7 @@ int main()
     );
 
     if (!cv::imwrite("images\\03_gradient_magnitude.png", gradient_view)) {
-        std::printf("Nie udalo sie zapisac magnitudy gradientu\n");
+        std::printf("Failed to save gradient magnitude image\n");
         return 4;
     }
 
@@ -171,8 +171,8 @@ int main()
         }
     }
 
-    std::printf("NMS >= low threshold: %d\n", nmsAboveLow);
-    std::printf("NMS >= high threshold: %d\n", nmsAboveHigh);
+    std::printf("NMS pixels >= low threshold: %d\n", nmsAboveLow);
+    std::printf("NMS pixels >= high threshold: %d\n", nmsAboveHigh);
 
     cv::Mat nms_view;
 
@@ -186,7 +186,7 @@ int main()
     );
 
     if (!cv::imwrite("images\\04_nms.png", nms_view)) {
-        std::printf("Nie udalo sie zapisac obrazu NMS\n");
+        std::printf("Failed to save NMS image\n");
         return 5;
     }
 
@@ -223,12 +223,12 @@ int main()
         }
     }
 
-    printf("Rejected: %d\n", rejectedCount);
-    printf("Weak: %d\n", weakCount);
-    printf("Strong: %d\n", strongCount);
+    std::printf("Rejected pixels: %d\n", rejectedCount);
+    std::printf("Weak edge pixels: %d\n", weakCount);
+    std::printf("Strong edge pixels: %d\n", strongCount);
 
     if (!cv::imwrite("images\\05_double_threshold.png", thresholded)) {
-        std::printf("Nie udalo sie zapisac obrazu po progowaniu\n");
+        std::printf("Failed to save double-threshold image\n");
         return 6;
     }
 
@@ -284,7 +284,7 @@ int main()
         }
     }
 
-    std::printf("Weak edges remaining after hysteresis: %d\n", survivingWeak);
+    std::printf("Unconnected weak edge pixels: %d\n", survivingWeak);
 
     int connectedEdges = 0;
 
@@ -296,7 +296,7 @@ int main()
         }
     }
 
-    std::printf("Strong + connected weak edges: %d\n", connectedEdges);
+    std::printf("Edges after hysteresis: %d\n", connectedEdges);
 
     // Discard weak edges that were not connected to strong edges.
     for (int i = 0; i < thresholded.rows; i++) {
@@ -308,7 +308,7 @@ int main()
     }
 
     if (!cv::imwrite("images\\06_my_own_canny.png", thresholded)) {
-        std::printf("Nie udalo sie zapisac wyniku wlasnego Canny\n");
+        std::printf("Failed to save custom Canny result\n");
         return 7;
     }
 
@@ -321,14 +321,14 @@ int main()
     cv::Canny(blurred, edges, 100, 200, 3, true);
 
     if (!cv::imwrite("images\\07_canny_opencv.png", edges)) {
-        std::printf("Nie udalo sie zapisac wyniku OpenCV Canny\n");
+        std::printf("Failed to save OpenCV Canny result\n");
         return 8;
     }
 
     int myEdgeCount = cv::countNonZero(thresholded);
     int openCvEdgeCount = cv::countNonZero(edges);
 
-    std::printf("My Canny edges: %d\n", myEdgeCount);
+    std::printf("Custom Canny edges: %d\n", myEdgeCount);
     std::printf("OpenCV Canny edges: %d\n", openCvEdgeCount);
 
     return 0;
