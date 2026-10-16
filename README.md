@@ -8,9 +8,9 @@ The goal of this project is to understand the individual stages of edge detectio
 
 Both implementations process the same input image. Their outputs are shown side by side for visual comparison.
 
-| Custom Canny | OpenCV Canny |
-|:---:|:---:|
-| ![Custom Canny](images/06_my_own_canny.png) | ![OpenCV Canny](images/07_canny_opencv.png) |
+| Original Image | Custom Canny | OpenCV Canny |
+|:---:|:---:|:---:|
+| ![Original Image](images/input.png) | ![Custom Canny](images/06_my_own_canny.png) | ![OpenCV Canny](images/07_canny_opencv.png) |
 
 ## Features
 
